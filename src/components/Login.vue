@@ -31,8 +31,10 @@ import { ref } from "vue";
             type="password"
             placeholder="Enter your password"
           />
-          <span class="text-right text-xs text-primary-accent"
-            >Forgotten Password?</span
+          <router-link
+            to="/passwordreset"
+            class="text-right text-xs text-primary-accent"
+            >Forgotten Password?</router-link
           >
         </div>
         <button class="w-full h-[40px] my-2 text-white bg-black">LOG IN</button>
