@@ -19,13 +19,13 @@ import { ref } from "vue";
           />
         </div>
         <div class="flex flex-col w-full">
-          <span class="font-semibold">Email</span>
+          <span class="font-semibold text-sm">Email</span>
           <input
             class="w-full h-[40px] px-4 mt-2 mb-4 bg-neutral-100 placeholder:text-neutral-400 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
             type="text"
             placeholder="Enter your username"
           />
-          <span class="font-semibold">Password</span>
+          <span class="font-semibold text-sm">Password</span>
           <input
             class="w-full h-[40px] px-4 my-2 bg-neutral-100 placeholder:text-neutral-400 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
             type="password"
@@ -37,7 +37,12 @@ import { ref } from "vue";
             >Forgotten Password?</router-link
           >
         </div>
-        <button class="w-full h-[40px] my-2 text-white bg-black">LOG IN</button>
+        <router-link
+          to="/"
+          class="w-full h-[40px] my-2 text-white bg-black flex items-center justify-center"
+        >
+          LOG IN
+        </router-link>
       </div>
     </div>
   </div>

@@ -4,10 +4,10 @@ import Login from "../views/Login.vue";
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "Dashboard",
     component: () => import("../views/Dashboard.vue"),
     beforeEnter: (to, from, next) => {
-      const isAuthenticated = false;
+      const isAuthenticated = true;
 
       if (!isAuthenticated) {
         next({ name: "Login" });
