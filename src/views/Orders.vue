@@ -6,7 +6,12 @@ import Topbar from "../components/Topbar.vue";
 <template>
   <div class="w-screen h-screen flex bg-neutral-200">
     <Sidebar />
-    <Topbar />
+    <div>
+      <Topbar />
+      <div>
+        <h1>All Orders</h1>
+      </div>
+    </div>
   </div>
 </template>
 
