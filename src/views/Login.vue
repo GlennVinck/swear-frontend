@@ -1,9 +1,9 @@
 <script setup>
-import helloworld from "../components/HelloWorld.vue";
+import Login from "../components/Login.vue";
 </script>
 
 <template>
   <div>
-    <helloworld />
+    <Login />
   </div>
 </template>
