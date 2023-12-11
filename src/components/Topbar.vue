@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <h1>Navbar</h1>
+  <div class="w-screen h-[64px] bg-white"></div>
 </template>
 
 <style scoped></style>

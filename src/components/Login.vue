@@ -21,13 +21,13 @@ import { ref } from "vue";
         <div class="flex flex-col w-full">
           <span class="font-semibold text-sm">Email</span>
           <input
-            class="w-full h-[40px] px-4 mt-2 mb-4 bg-neutral-100 placeholder:text-neutral-400 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
+            class="w-full h-[40px] px-4 mt-2 mb-4 bg-neutral-100 placeholder:text-neutral-300 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
             type="text"
             placeholder="Enter your username"
           />
           <span class="font-semibold text-sm">Password</span>
           <input
-            class="w-full h-[40px] px-4 my-2 bg-neutral-100 placeholder:text-neutral-400 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
+            class="w-full h-[40px] px-4 my-2 bg-neutral-100 placeholder:text-neutral-300 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
             type="password"
             placeholder="Enter your password"
           />

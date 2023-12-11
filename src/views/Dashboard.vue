@@ -1,11 +1,12 @@
 <script setup>
-import Navbar from "../components/Navbar.vue";
+import Sidebar from "../components/Sidebar.vue";
+import Topbar from "../components/Topbar.vue";
 </script>
 
 <template>
-  <h1>Dashboard comes here</h1>
-  <div>
-    <Navbar />
+  <div class="w-screen h-screen flex bg-neutral-200">
+    <Sidebar />
+    <Topbar />
   </div>
 </template>
 
