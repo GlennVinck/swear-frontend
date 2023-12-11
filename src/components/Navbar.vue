@@ -4,4 +4,4 @@
   <h1>Navbar</h1>
 </template>
 
-<style scoped></style>
+<style lang="postcss" scoped></style>
