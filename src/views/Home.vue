@@ -2,6 +2,7 @@
 import Sidebar from "../components/Sidebar.vue";
 import Topbar from "../components/Topbar.vue";
 import CardSmall from "../components/CardSmall.vue";
+import OrderTable from "../components/OrderTable.vue";
 </script>
 
 <template>
@@ -28,6 +29,7 @@ import CardSmall from "../components/CardSmall.vue";
             <CardSmall title="Canceled" :content="35" />
           </div>
         </div>
+        <OrderTable />
       </div>
     </div>
   </div>
