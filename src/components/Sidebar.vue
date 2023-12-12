@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="min-w-[240px] h-screen bg-white border-r-2 border-neutral-200 rounded-r"
+    class="min-w-[240px] h-screen bg-white border-r-4 border-stone-100 rounded-r"
   >
     <div class="flex flex-col items-center justify-start h-full p-6">
       <div>

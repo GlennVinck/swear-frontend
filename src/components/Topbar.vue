@@ -8,7 +8,7 @@
       <input
         type="text"
         placeholder="Search"
-        class="h-[32px] min-w-[320px] px-4 bg-stone-100 border-none rounded focus:outline-none placeholder:text-sm placeholder:text-neutral-400 focus:ring-1 focus:ring-primary-accent"
+        class="h-[32px] min-w-[400px] px-4 bg-stone-100 border-none rounded focus:outline-none placeholder:text-sm placeholder:text-neutral-400 focus:ring-1 focus:ring-primary-accent"
       />
       <img
         src="../assets/icons/search.svg"

@@ -14,7 +14,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="w-screen h-screen flex bg-neutral-200">
+  <div class="w-screen h-screen flex bg-stone-100">
     <Sidebar />
     <div class="w-full">
       <Topbar />
