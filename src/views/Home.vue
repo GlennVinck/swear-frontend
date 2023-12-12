@@ -23,10 +23,26 @@ import OrderTable from "../components/OrderTable.vue";
         <div class="w-fit p-4 pr-0 my-4 border border-neutral-300 rounded">
           <h2 class="text-base font-semibold mb-2">Status</h2>
           <div class="flex row">
-            <CardSmall title="Pending" :content="12" />
-            <CardSmall title="In Progress" :content="8" />
-            <CardSmall title="Delivered" :content="110" />
-            <CardSmall title="Canceled" :content="35" />
+            <CardSmall
+              icon="../src/assets/icons/pending.svg"
+              title="Pending"
+              :content="12"
+            />
+            <CardSmall
+              icon="../src/assets/icons/inprogress.svg"
+              title="In Progress"
+              :content="8"
+            />
+            <CardSmall
+              icon="../src/assets/icons/delivered.svg"
+              title="Delivered"
+              :content="110"
+            />
+            <CardSmall
+              icon="../src/assets/icons/cancel.svg"
+              title="Canceled"
+              :content="35"
+            />
           </div>
         </div>
         <div

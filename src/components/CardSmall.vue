@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps } from "vue";
 
-const props = defineProps(["title", "content"]);
+const props = defineProps(["title", "content", "icon"]);
 
 function titleColor() {
   if (props.title === "Pending") {
@@ -20,7 +20,10 @@ function titleColor() {
 
 <template>
   <div class="w-[200px] h-[96px] bg-white p-4 mr-4 rounded">
-    <h3 :class="titleColor() + ' text-sm mb-2'">{{ title }}</h3>
+    <div class="flex row mb-2">
+      <img v-if="props.icon" :src="props.icon" alt="Icon" class="mr-2" />
+      <h3 :class="titleColor() + ' text-sm '">{{ title }}</h3>
+    </div>
     <span class="text-2xl font-semibold">{{ content }}</span>
   </div>
 </template>
