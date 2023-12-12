@@ -4,7 +4,7 @@ import { ref } from "vue";
 
 <template>
   <div
-    class="flex items-center justify-center min-h-screen drop-shadow-[0_0px_60px_rgba(0,0,0,0.5)]"
+    class="flex items-center justify-center min-h-screen drop-shadow-[0_0px_60px_rgba(0,0,0,0.2)]"
   >
     <div class="w-[600px] h-[400px]">
       <img src="../assets/herobanner.jpg" alt="herobanner" />
