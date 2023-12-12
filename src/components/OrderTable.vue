@@ -8,6 +8,8 @@ const goToOrderDetails = (orderId) => {
   router.push({ name: "OrderDetails", params: { id: orderId } });
 };
 
+const props = defineProps(["ordersToShow"]);
+
 const orders = ref([
   {
     id: "6516845168sdf984",
@@ -41,7 +43,18 @@ const orders = ref([
     status: "pending",
     invoice: "View",
   },
+  {
+    id: "6516845168sdf980",
+    from: "London",
+    to: "Belgium",
+    date: "20/12/2023",
+    status: "pending",
+    invoice: "View",
+  }
 ]);
+
+const limitedOrders = ref(orders.value.slice(0, props.ordersToShow));
+
 </script>
 
 <template>
@@ -62,7 +75,7 @@ const orders = ref([
     </thead>
     <tbody>
       <tr
-        v-for="order in orders"
+        v-for="order in limitedOrders"
         :key="order.id"
         class="h-10 text-sm cursor-pointer hover:text-primary-accent"
         @click="() => goToOrderDetails(order.id)"

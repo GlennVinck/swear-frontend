@@ -3,6 +3,15 @@ import Sidebar from "../components/Sidebar.vue";
 import Topbar from "../components/Topbar.vue";
 import CardSmall from "../components/CardSmall.vue";
 import OrderTable from "../components/OrderTable.vue";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const showAllOrders = () => {
+  router.push({ name: "Orders" });
+};
+
+const newestOrdersToShow = 4;
 </script>
 
 <template>
@@ -54,7 +63,10 @@ import OrderTable from "../components/OrderTable.vue";
               class="h-fit w-auto ml-2"
             />
           </div>
-          <OrderTable />
+          <OrderTable :ordersToShow="newestOrdersToShow" />
+          <button class="text-primary-accent underline mt-2 cursor-pointer" @click="showAllOrders">
+        See All Orders
+      </button>
         </div>
       </div>
     </div>
