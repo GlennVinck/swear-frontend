@@ -15,7 +15,7 @@ const orders = ref([
     to: "Bristol",
     date: "20/12/2023",
     status: "pending",
-    invoice: "view",
+    invoice: "View",
   },
   {
     id: "6516845168sdf983",
@@ -23,7 +23,7 @@ const orders = ref([
     to: "Bristol",
     date: "20/12/2023",
     status: "pending",
-    invoice: "view",
+    invoice: "View",
   },
   {
     id: "6516845168sdf982",
@@ -31,7 +31,7 @@ const orders = ref([
     to: "Bristol",
     date: "20/12/2023",
     status: "pending",
-    invoice: "view",
+    invoice: "View",
   },
   {
     id: "6516845168sdf981",
@@ -39,7 +39,7 @@ const orders = ref([
     to: "Bristol",
     date: "20/12/2023",
     status: "pending",
-    invoice: "view",
+    invoice: "View",
   },
 ]);
 </script>
@@ -55,7 +55,9 @@ const orders = ref([
         <th class="font-normal pl-4 bg-neutral-300">To</th>
         <th class="font-normal pl-4 bg-neutral-300">Date</th>
         <th class="font-normal pl-4 bg-neutral-300">Status</th>
-        <th class="font-normal pl-4 rounded-r bg-neutral-300">Invoice</th>
+        <th class="font-normal pr-4 rounded-r bg-neutral-300 text-right">
+          Invoice
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -70,7 +72,9 @@ const orders = ref([
         <td class="pl-4 bg-white">{{ order.to }}</td>
         <td class="pl-4 bg-white">{{ order.date }}</td>
         <td class="pl-4 bg-white">{{ order.status }}</td>
-        <td class="pl-4 rounded-r bg-white">{{ order.invoice }}</td>
+        <td class="pr-4 rounded-r bg-white font-semibold text-right">
+          {{ order.invoice }}
+        </td>
       </tr>
     </tbody>
   </table>

@@ -10,16 +10,24 @@
           alt=""
         />
       </div>
-      <div>
+      <div class="p-4 mt-16 w-full">
         <router-link
           to="/"
-          class="flex items-center justify-start w-full h-[40px] my-2 text-sm text-neutral-500 hover:text-primary-accent"
-          >Home</router-link
+          class="flex items-center justify-start w-full h-[40px] my-2 text-base font-semibold hover:text-primary-accent"
+          ><img
+            class="w-auto h-auto mr-2"
+            src="../assets/icons/home.svg"
+            alt=""
+          />Home</router-link
         >
         <router-link
           to="/orders"
-          class="flex items-center justify-start w-full h-[40px] my-2 text-sm text-neutral-500 hover:text-primary-accent"
-          >All Orders</router-link
+          class="flex items-center justify-start w-full h-[40px] my-2 text-base font-semibold hover:text-primary-accent"
+          ><img
+            class="w-auto h-auto mr-2"
+            src="../assets/icons/allorders.svg"
+            alt=""
+          />All Orders</router-link
         >
       </div>
     </div>
