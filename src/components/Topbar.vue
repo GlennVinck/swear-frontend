@@ -16,6 +16,22 @@
         class="absolute right-4"
       />
     </div>
+    <div class="flex flex-row gap-4 items-center justify-center mr-4">
+      <img
+        src="../assets/profilepic.jpg"
+        alt="profile picture"
+        class="w-[32px] h-[32px] rounded-full"
+      />
+      <div class="flex flex-col">
+        <span class="text-sm font-semibold">Joris Hens</span>
+        <span class="text-xs text-neutral-400">Admin</span>
+      </div>
+      <img
+        src="../assets/caret-down-thin.svg"
+        alt="arrow down"
+        class="w-[24px] h-[24px]"
+      />
+    </div>
   </div>
 </template>
 
