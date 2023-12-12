@@ -48,14 +48,14 @@ const orders = ref([
   <table
     class="w-full max-w-6xl border-separate border-spacing-x-0 border-spacing-y-4"
   >
-    <thead class="h-10 text-neutral-400 text-left">
+    <thead class="h-10 text-neutral-200 text-left">
       <tr class="text-xs">
-        <th class="font-normal pl-4 rounded-l bg-neutral-300">Order ID</th>
-        <th class="font-normal pl-4 bg-neutral-300">From</th>
-        <th class="font-normal pl-4 bg-neutral-300">To</th>
-        <th class="font-normal pl-4 bg-neutral-300">Date</th>
-        <th class="font-normal pl-4 bg-neutral-300">Status</th>
-        <th class="font-normal pr-4 rounded-r bg-neutral-300 text-right">
+        <th class="font-medium pl-4 rounded-l bg-stone-900">Order ID #</th>
+        <th class="font-medium pl-4 bg-stone-900">Shipment From</th>
+        <th class="font-medium pl-4 bg-stone-900">Shipment To</th>
+        <th class="font-medium pl-4 bg-stone-900">Order Date</th>
+        <th class="font-medium pl-4 bg-stone-900">Status</th>
+        <th class="font-medium pr-4 rounded-r bg-stone-900 text-right">
           Invoice
         </th>
       </tr>

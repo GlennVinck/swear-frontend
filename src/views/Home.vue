@@ -21,7 +21,7 @@ import OrderTable from "../components/OrderTable.vue";
           </div>
         </div>
         <div class="w-fit p-4 pr-0 my-4">
-          <h2 class="text-base font-semibold mb-2">Status</h2>
+          <h2 class="text-base font-semibold mb-2">Global Order Status</h2>
           <div class="flex row">
             <CardSmall
               icon="../src/assets/icons/pending.svg"
