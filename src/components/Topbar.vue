@@ -2,7 +2,7 @@
 
 <template>
   <div
-    class="w-full h-[64px] p-2 bg-white flex row items-center justify-between"
+    class="w-full h-[64px] p-2 bg-white flex row items-center justify-between rounded-l"
   >
     <div class="flex items-center relative ml-2">
       <input

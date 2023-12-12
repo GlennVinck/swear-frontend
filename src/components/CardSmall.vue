@@ -19,7 +19,9 @@ function titleColor() {
 </script>
 
 <template>
-  <div class="w-[200px] h-[96px] bg-white p-4 mr-4 rounded">
+  <div
+    class="w-[200px] h-[96px] bg-white p-4 mr-4 rounded flex flex-col justify-between"
+  >
     <div class="flex row mb-2">
       <img v-if="props.icon" :src="props.icon" alt="Icon" class="mr-2" />
       <h3 :class="titleColor() + ' text-sm '">{{ title }}</h3>
