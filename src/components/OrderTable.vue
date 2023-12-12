@@ -1,5 +1,12 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const goToOrderDetails = (orderId) => {
+  router.push({ name: "OrderDetails", params: { id: orderId } });
+};
 
 const orders = ref([
   {
@@ -11,7 +18,7 @@ const orders = ref([
     invoice: "view",
   },
   {
-    id: "6516845168sdf984",
+    id: "6516845168sdf983",
     from: "London",
     to: "Bristol",
     date: "20/12/2023",
@@ -19,7 +26,7 @@ const orders = ref([
     invoice: "view",
   },
   {
-    id: "6516845168sdf984",
+    id: "6516845168sdf982",
     from: "London",
     to: "Bristol",
     date: "20/12/2023",
@@ -27,7 +34,7 @@ const orders = ref([
     invoice: "view",
   },
   {
-    id: "6516845168sdf984",
+    id: "6516845168sdf981",
     from: "London",
     to: "Bristol",
     date: "20/12/2023",
@@ -52,7 +59,12 @@ const orders = ref([
       </tr>
     </thead>
     <tbody>
-      <tr v-for="order in orders" class="h-10 text-sm">
+      <tr
+        v-for="order in orders"
+        :key="order.id"
+        class="h-10 text-sm cursor-pointer hover:text-primary-accent"
+        @click="() => goToOrderDetails(order.id)"
+      >
         <td class="pl-4 rounded-l bg-white">{{ order.id }}</td>
         <td class="pl-4 bg-white">{{ order.from }}</td>
         <td class="pl-4 bg-white">{{ order.to }}</td>

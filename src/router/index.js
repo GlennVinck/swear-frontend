@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Login from "../views/Login.vue";
 import Orders from "../views/Orders.vue";
+import OrderDetails from "../views/OrderDetails.vue";
 
 const routes = [
   {
@@ -26,6 +27,11 @@ const routes = [
     path: "/orders",
     name: "Orders",
     component: Orders,
+  },
+  {
+    path: "/orders/:id", // Dynamic parameter for order ID
+    name: "OrderDetails",
+    component: OrderDetails,
   },
 ];
 
