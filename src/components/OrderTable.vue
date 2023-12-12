@@ -38,34 +38,30 @@ const orders = ref([
 </script>
 
 <template>
-  <div id="main-container">
-    <div class="w-full my-8">
-      <table
-        class="w-full max-w-6xl border-separate border-spacing-x-0 border-spacing-y-4"
-      >
-        <thead class="h-10 text-neutral-400 text-left">
-          <tr class="text-xs bg-white">
-            <th class="font-normal pl-4">Order ID</th>
-            <th class="font-normal pl-4">From</th>
-            <th class="font-normal pl-4">To</th>
-            <th class="font-normal pl-4">Date</th>
-            <th class="font-normal pl-4">Status</th>
-            <th class="font-normal pl-4">Invoice</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="order in orders" class="h-10 bg-white text-sm">
-            <td class="pl-4">{{ order.id }}</td>
-            <td class="pl-4">{{ order.from }}</td>
-            <td class="pl-4">{{ order.to }}</td>
-            <td class="pl-4">{{ order.date }}</td>
-            <td class="pl-4">{{ order.status }}</td>
-            <td class="pl-4">{{ order.invoice }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+  <table
+    class="w-full max-w-6xl border-separate border-spacing-x-0 border-spacing-y-4"
+  >
+    <thead class="h-10 text-neutral-400 text-left">
+      <tr class="text-xs">
+        <th class="font-normal pl-4 rounded-l bg-neutral-300">Order ID</th>
+        <th class="font-normal pl-4 bg-neutral-300">From</th>
+        <th class="font-normal pl-4 bg-neutral-300">To</th>
+        <th class="font-normal pl-4 bg-neutral-300">Date</th>
+        <th class="font-normal pl-4 bg-neutral-300">Status</th>
+        <th class="font-normal pl-4 rounded-r bg-neutral-300">Invoice</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="order in orders" class="h-10 text-sm">
+        <td class="pl-4 rounded-l bg-white">{{ order.id }}</td>
+        <td class="pl-4 bg-white">{{ order.from }}</td>
+        <td class="pl-4 bg-white">{{ order.to }}</td>
+        <td class="pl-4 bg-white">{{ order.date }}</td>
+        <td class="pl-4 bg-white">{{ order.status }}</td>
+        <td class="pl-4 rounded-r bg-white">{{ order.invoice }}</td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <style scoped></style>

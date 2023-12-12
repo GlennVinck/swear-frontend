@@ -12,7 +12,7 @@ import OrderTable from "../components/OrderTable.vue";
       <Topbar />
       <div class="p-8">
         <h1 class="text-2xl font-semibold mb-2">Home</h1>
-        <div class="w-fit p-4 pr-0 my-4 border border-neutral-300">
+        <div class="w-fit p-4 pr-0 my-4 border border-neutral-300 rounded">
           <h2 class="text-base font-semibold mb-2">Overview</h2>
           <div class="flex row">
             <CardSmall title="Total Orders" :content="165" />
@@ -20,7 +20,7 @@ import OrderTable from "../components/OrderTable.vue";
             <CardSmall title="Total Revenue" :content="'€23,450.00'" />
           </div>
         </div>
-        <div class="w-fit p-4 pr-0 my-4 border border-neutral-300">
+        <div class="w-fit p-4 pr-0 my-4 border border-neutral-300 rounded">
           <h2 class="text-base font-semibold mb-2">Status</h2>
           <div class="flex row">
             <CardSmall title="Pending" :content="12" />
@@ -29,7 +29,19 @@ import OrderTable from "../components/OrderTable.vue";
             <CardSmall title="Canceled" :content="35" />
           </div>
         </div>
-        <OrderTable />
+        <div
+          class="w-screeen max-w-6xl p-4 pb-0 my-4 border border-neutral-300 rounded"
+        >
+          <div class="flex row items-center">
+            <h2 class="text-base font-semibold">Newest Orders</h2>
+            <img
+              src="../assets/label-live.jpg"
+              alt=""
+              class="h-fit w-auto ml-2"
+            />
+          </div>
+          <OrderTable />
+        </div>
       </div>
     </div>
   </div>
