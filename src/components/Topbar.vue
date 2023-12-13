@@ -31,12 +31,12 @@ const toggleDropdown = () => {
         class="w-[32px] h-[32px] rounded-full"
       />
 
-      <div :class="{ 'dropdown-show': showDropdown }" class="dropdown">
-          <!-- Dropdown content -->
+      <div :class="{ 'block': showDropdown, 'hidden': !showDropdown }" class="dropdown absolute top-full left-0 mt-2 bg-white px-8">
+
           <div class="dropdown-item">Account</div>
           <div class="dropdown-item">Settings</div>
           <div class="dropdown-item">Sign out</div>
-          <!-- Add other useful links here -->
+
         </div>
 
       <div class="flex flex-col">
@@ -53,29 +53,4 @@ const toggleDropdown = () => {
 </template>
 
 <style scoped>
-.dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: none;
-  z-index: 1000;
-}
-
-.dropdown-item {
-  padding: 8px;
-  cursor: pointer;
-}
-
-.dropdown-item:hover {
-  background-color: #f0f0f0;
-}
-
-/* Show the dropdown when the showDropdown value is true */
-.dropdown-show {
-  display: block;
-}
 </style>
