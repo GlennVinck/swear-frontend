@@ -1,15 +1,21 @@
 <script setup>
 import Sidebar from "../components/Sidebar.vue";
 import Topbar from "../components/Topbar.vue";
-import { ref, watchEffect } from "vue";
+import { ref, watchEffect, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 const previousRoute = ref(null);
+const orderId = ref(null);
 
 // Watch for route changes
 watchEffect(() => {
   previousRoute.value = router.currentRoute.value;
+});
+
+onMounted(() => {
+  // Get the order ID from the route params
+  orderId.value = router.currentRoute.value.params.id;
 });
 
 const orderDetails = ref({
@@ -20,7 +26,6 @@ const orderDetails = ref({
   status: "pending",
   invoice: "View",
 });
-
 </script>
 
 <template>
@@ -33,13 +38,13 @@ const orderDetails = ref({
           Back
         </button>
         <h1 class="text-2xl font-semibold mb-2">Order</h1>
-
+        <span>{{ orderId }}</span>
 
         <div class="flex row items-center">
           <div class="w-1/8 mr-8">
             <img
               src="../assets/herobanner.jpg"
-              alt="Order Image" 
+              alt="Order Image"
               class="w-full h-auto mb-4 rounded-lg"
             />
           </div>
@@ -62,10 +67,10 @@ const orderDetails = ref({
             <p class="text-base font-semibold">Invoice:</p>
             <p class="text-lg">{{ orderDetails.invoice }}</p>
           </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
