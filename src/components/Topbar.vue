@@ -10,8 +10,28 @@ const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
 };
 
-const signOut = () => {
-  router.push({ name: "Login" });
+const signOut = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/api/v1/users/logout", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      router.push("/login");
+      console.log("Logged out successfully");
+    } else {
+      console.error("Error logging out:", data.message);
+    }
+  } catch (error) {
+    console.error("Error logging out:", error);
+  }
 };
 </script>
 
