@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from "vue";
+
+const email = ref("");
+const password = ref("");
 </script>
 
 <template>
@@ -18,31 +21,39 @@ import { ref } from "vue";
             alt=""
           />
         </div>
-        <div class="flex flex-col w-full">
-          <span class="font-semibold text-sm">Email</span>
-          <input
-            class="w-full h-[40px] px-4 mt-2 mb-4 bg-neutral-100 placeholder:text-neutral-300 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
-            type="text"
-            placeholder="Enter your username"
-          />
-          <span class="font-semibold text-sm">Password</span>
-          <input
-            class="w-full h-[40px] px-4 my-2 bg-neutral-100 placeholder:text-neutral-300 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
-            type="password"
-            placeholder="Enter your password"
-          />
-          <router-link
-            to="/passwordreset"
-            class="text-right text-xs text-primary-accent"
-            >Forgotten Password?</router-link
+        <form class="flex flex-col w-full">
+          <div class="flex flex-col mb-12">
+            <label for="email" class="font-semibold text-sm">Email</label>
+            <input
+              class="w-full h-[40px] px-4 mt-2 mb-4 bg-neutral-100 placeholder:text-neutral-300 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
+              type="text"
+              name="email"
+              id="email"
+              v-model="email"
+              placeholder="Enter your username"
+            />
+            <label for="password" class="font-semibold text-sm">Password</label>
+            <input
+              class="w-full h-[40px] px-4 my-2 bg-neutral-100 placeholder:text-neutral-300 placeholder:text-sm focus:outline-none focus:ring-1 focus:ring-primary-accent"
+              type="password"
+              name="password"
+              id="password"
+              v-model="password"
+              placeholder="Enter your password"
+            />
+            <router-link
+              to="/passwordreset"
+              class="text-right text-xs text-primary-accent"
+              >Password Forgotten?</router-link
+            >
+          </div>
+          <button
+            type="submit"
+            class="w-full h-[40px] my-2 text-white bg-black flex items-center justify-center"
           >
-        </div>
-        <router-link
-          to="/"
-          class="w-full h-[40px] my-2 text-white bg-black flex items-center justify-center"
-        >
-          LOG IN
-        </router-link>
+            LOG IN
+          </button>
+        </form>
       </div>
     </div>
   </div>
