@@ -1,10 +1,17 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const showDropdown = ref(false);
 
 const toggleDropdown = () => {
   showDropdown.value = !showDropdown.value;
+};
+
+const signOut = () => {
+  router.push({ name: "Login" });
 };
 </script>
 
@@ -24,20 +31,15 @@ const toggleDropdown = () => {
         class="absolute right-4"
       />
     </div>
-    <div class="flex flex-row gap-4 items-center justify-center mr-4 cursor-pointer relative" @click="toggleDropdown">
+    <div
+      class="flex flex-row gap-4 items-center justify-center mr-4 cursor-pointer relative"
+      @click="toggleDropdown"
+    >
       <img
         src="../assets/profilepic.jpg"
         alt="profile picture"
         class="w-[32px] h-[32px] rounded-full"
       />
-
-      <div :class="{ 'block': showDropdown, 'hidden': !showDropdown }" class="dropdown absolute top-full left-0 mt-2 bg-white px-8">
-
-          <div class="dropdown-item">Account</div>
-          <div class="dropdown-item">Settings</div>
-          <div class="dropdown-item">Sign out</div>
-
-        </div>
 
       <div class="flex flex-col">
         <span class="text-sm font-semibold">Joris Hens</span>
@@ -50,7 +52,27 @@ const toggleDropdown = () => {
       />
     </div>
   </div>
+  <div
+    :class="{ block: showDropdown, hidden: !showDropdown }"
+    class="w-[240px] absolute top-[68px] right-1 bg-white rounded"
+  >
+    <button
+      class="w-full h-[44px] pl-4 rounded flex items-center hover:bg-primary-accent"
+    >
+      Account
+    </button>
+    <button
+      class="w-full h-[44px] pl-4 rounded flex items-center hover:bg-primary-accent"
+    >
+      Settings
+    </button>
+    <button
+      @click="signOut"
+      class="w-full h-[44px] pl-4 rounded flex items-center hover:bg-primary-accent"
+    >
+      Sign out
+    </button>
+  </div>
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
