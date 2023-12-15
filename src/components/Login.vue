@@ -1,8 +1,34 @@
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const email = ref("");
 const password = ref("");
+
+const error = ref("");
+
+const Login = async () => {
+  const response = await fetch("http://localhost:3000/api/v1/users/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value,
+    }),
+  });
+  const data = await response.json();
+  if (data.status === "success") {
+    localStorage.setItem("token", data.data.token);
+    localStorage.setItem("user", JSON.stringify(data.data.user));
+    router.push("/");
+  } else {
+    error.value = data.message;
+  }
+};
 </script>
 
 <template>
@@ -21,7 +47,7 @@ const password = ref("");
             alt=""
           />
         </div>
-        <form class="flex flex-col w-full">
+        <form class="flex flex-col w-full" @submit.prevent="Login">
           <div class="flex flex-col mb-12">
             <label for="email" class="font-semibold text-sm">Email</label>
             <input
@@ -41,12 +67,14 @@ const password = ref("");
               v-model="password"
               placeholder="Enter your password"
             />
-            <router-link
+            <!-- <router-link
               to="/passwordreset"
               class="text-right text-xs text-primary-accent"
               >Password Forgotten?</router-link
-            >
+            > -->
           </div>
+          <p class="text-xs text-red-500">{{ error }}</p>
+
           <button
             type="submit"
             class="w-full h-[40px] my-2 text-white bg-black flex items-center justify-center"
