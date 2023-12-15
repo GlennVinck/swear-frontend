@@ -26,7 +26,10 @@ function titleColor() {
       <img v-if="props.icon" :src="props.icon" alt="Icon" class="mr-2" />
       <h3 :class="titleColor() + ' text-sm '">{{ title }}</h3>
     </div>
-    <span class="text-2xl font-semibold">{{ content }}</span>
+    <span class="text-2xl font-semibold" v-if="title === 'Total Revenue'"
+      >€{{ content }}</span
+    >
+    <span class="text-2xl font-semibold" v-else>{{ content }}</span>
   </div>
 </template>
 

@@ -11,6 +11,45 @@ const showAllOrders = () => {
   router.push({ name: "Orders" });
 };
 
+let totalOrders = ref("");
+let totalCustomers = ref("");
+let totalRevenue = ref("");
+
+const fetchAllOrders = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/api/v1/orders", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+      totalOrders.value = data.data.orders.length;
+      //totalrevenue is the sum of all the orders
+      totalRevenue.value = data.data.orders.reduce(
+        (acc, order) => acc + order.price,
+        0
+      );
+      //total customers is the number of unique customers based on the customerName
+      totalCustomers.value = data.data.orders.reduce((acc, order) => {
+        if (!acc.includes(order.customerName)) {
+          acc.push(order.customerName);
+        }
+        return acc;
+      }, []).length;
+    } else {
+      console.error("Error fetching total orders:", data.message);
+    }
+  } catch (error) {
+    console.error("Error fetching total orders:", error);
+  }
+};
+
+fetchAllOrders();
+
 const newestOrdersToShow = 4;
 </script>
 
@@ -24,9 +63,9 @@ const newestOrdersToShow = 4;
         <div class="w-fit p-4 pr-0 my-4">
           <h2 class="text-base font-semibold mb-2">Overview</h2>
           <div class="flex row">
-            <CardSmall title="Total Orders" :content="165" />
-            <CardSmall title="Total Customers" :content="143" />
-            <CardSmall title="Total Revenue" :content="'€23,450.00'" />
+            <CardSmall title="Total Orders" :content="totalOrders" />
+            <CardSmall title="Total Customers" :content="totalCustomers" />
+            <CardSmall title="Total Revenue" :content="totalRevenue" />
           </div>
         </div>
         <div class="w-fit p-4 pr-0 my-4">
@@ -64,9 +103,12 @@ const newestOrdersToShow = 4;
             />
           </div>
           <OrderTable :ordersToShow="newestOrdersToShow" />
-          <button class="text-primary-accent underline mt-2 cursor-pointer" @click="showAllOrders">
-        See All Orders
-      </button>
+          <button
+            class="text-primary-accent underline mt-2 cursor-pointer"
+            @click="showAllOrders"
+          >
+            See All Orders
+          </button>
         </div>
       </div>
     </div>
