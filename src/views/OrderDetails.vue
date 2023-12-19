@@ -238,9 +238,9 @@ onMounted(() => {
             </div>
           </div>
         </div>
-        <div class="md:text-right">
+        <div class="flex flex-row justify-end items-center mt-4">
           <button
-            class="text-1xl font-regular md:mt-4 md:ml-0 text-black p-2 rounded-md"
+            class="p-2 text-sm font-normal border border-red-500 text-red-500 rounded"
           >
             Cancel Order
           </button>

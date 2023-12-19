@@ -47,7 +47,7 @@ function getStatusStyles() {
 <template>
   <div
     :class="[getStatusStyles().bgColor, getStatusStyles().borderColor]"
-    class="w-fit px-2 border-2 rounded"
+    class="w-fit px-2 border rounded"
   >
     <p
       :class="getStatusStyles().textColor"
