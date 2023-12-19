@@ -47,11 +47,11 @@ function getStatusStyles() {
 <template>
   <div
     :class="[getStatusStyles().bgColor, getStatusStyles().borderColor]"
-    class="w-fit px-2 border rounded"
+    class="w-fit min-w-[120px] px-2 border rounded"
   >
     <p
       :class="getStatusStyles().textColor"
-      class="text-sm font-medium px-2 py-1"
+      class="text-sm font-medium px-2 py-1 text-center"
     >
       {{ content }}
     </p>

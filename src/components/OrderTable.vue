@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref, defineProps, computed } from "vue";
 import { useRouter } from "vue-router";
+import OrderStatus from "./OrderStatus.vue";
 
 const router = useRouter();
 
@@ -68,7 +69,9 @@ const limitedOrders = computed(() => orders.value.slice(0, props.ordersToShow));
         <td class="pl-4 bg-white">{{ order.deliveryAdress.shippingFrom }}</td>
         <td class="pl-4 bg-white">{{ order.deliveryAdress.shippingTo }}</td>
         <td class="pl-4 bg-white">{{ order.orderDate }}</td>
-        <td class="pl-4 bg-white">{{ order.status }}</td>
+        <td class="pl-4 bg-white">
+          <OrderStatus title="OrderStatus" :content="order.status" />
+        </td>
         <td class="pr-4 rounded-r bg-white font-semibold text-right">View</td>
       </tr>
     </tbody>

@@ -7,13 +7,11 @@ import OrderTable from "../components/OrderTable.vue";
 <template>
   <div class="w-screen h-screen flex bg-stone-100">
     <Sidebar />
-    <div class="w-full">
+    <div class="w-screen">
       <Topbar />
       <div class="p-8">
-        <h1 class="text-2xl font-semibold mb-4">Orders</h1>
-        <div class="w-fit p-4 pr-0 my-4">
-        </div>
-        <div class="w-screeen max-w-7xl p-4 pb-0 my-4">
+        <h1 class="text-2xl font-semibold mb-4">All Orders</h1>
+        <div class="w-full max-w-7xl p-4 pb-0 my-4">
           <OrderTable />
         </div>
       </div>

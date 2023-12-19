@@ -110,7 +110,7 @@ const newestOrdersToShow = 4;
             />
           </div>
         </div>
-        <div class="w-screeen max-w-6xl p-4 pb-0 my-4">
+        <div class="max-w-6xl p-4 pb-0 my-4">
           <div class="flex row items-center">
             <h2 class="text-base font-semibold">Newest Orders</h2>
             <img
@@ -120,12 +120,14 @@ const newestOrdersToShow = 4;
             />
           </div>
           <OrderTable :ordersToShow="newestOrdersToShow" />
-          <button
-            class="text-primary-accent underline mt-2 cursor-pointer"
-            @click="showAllOrders"
-          >
-            See All Orders
-          </button>
+          <div class="flex row items-center justify-end">
+            <button
+              class="py-2 px-4 bg-black text-primary-accent font-medium text-sm mt-2 cursor-pointer rounded"
+              @click="showAllOrders"
+            >
+              See All Orders
+            </button>
+          </div>
         </div>
       </div>
     </div>
