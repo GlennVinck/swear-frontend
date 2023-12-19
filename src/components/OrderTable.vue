@@ -34,9 +34,24 @@ const getAllOrders = async () => {
   }
 };
 
-onMounted(async () => {
-  await getAllOrders();
-  console.log(orders);
+const socket = new WebSocket("ws://localhost:3000/primus");
+
+onMounted(() => {
+  getAllOrders();
+  socket.onmessage = (e) => {
+    const data = JSON.parse(e.data);
+    console.log("Message received:", e.data);
+
+    if (data.action === "newOrder") {
+      console.log("new order received", data);
+      handleNewOrder(data.data);
+    }
+  };
+
+  const handleNewOrder = (order) => {
+    orders.value.unshift(order);
+  };
+  getAllOrders();
 });
 
 const limitedOrders = computed(() => orders.value.slice(0, props.ordersToShow));
