@@ -1,60 +1,44 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref, defineProps, computed } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const goToOrderDetails = (orderId) => {
-  router.push({ name: "OrderDetails", params: { id: orderId } });
+const goToOrderDetails = (orderid) => {
+  router.push({ name: "OrderDetails", params: { id: orderid } });
 };
 
 const props = defineProps(["ordersToShow"]);
 
-const orders = ref([
-  {
-    id: "6516845168sdf984",
-    from: "London",
-    to: "Bristol",
-    date: "20/12/2023",
-    status: "pending",
-    invoice: "View",
-  },
-  {
-    id: "6516845168sdf983",
-    from: "London",
-    to: "Bristol",
-    date: "20/12/2023",
-    status: "pending",
-    invoice: "View",
-  },
-  {
-    id: "6516845168sdf982",
-    from: "London",
-    to: "Bristol",
-    date: "20/12/2023",
-    status: "pending",
-    invoice: "View",
-  },
-  {
-    id: "6516845168sdf981",
-    from: "London",
-    to: "Bristol",
-    date: "20/12/2023",
-    status: "pending",
-    invoice: "View",
-  },
-  {
-    id: "6516845168sdf980",
-    from: "London",
-    to: "Belgium",
-    date: "20/12/2023",
-    status: "pending",
-    invoice: "View",
+const orders = ref([]);
+
+const getAllOrders = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/api/v1/orders", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+      orders.value = data.data.orders;
+    } else {
+      console.error("Error fetching orders:", data.message);
+    }
+  } catch (error) {
+    console.error("Error fetching orders:", error);
   }
-]);
+};
 
-const limitedOrders = ref(orders.value.slice(0, props.ordersToShow));
+onMounted(async () => {
+  await getAllOrders();
+  console.log(orders);
+});
 
+const limitedOrders = computed(() => orders.value.slice(0, props.ordersToShow));
 </script>
 
 <template>
@@ -76,18 +60,16 @@ const limitedOrders = ref(orders.value.slice(0, props.ordersToShow));
     <tbody>
       <tr
         v-for="order in limitedOrders"
-        :key="order.id"
+        :key="order._id"
         class="h-10 text-sm cursor-pointer hover:text-primary-accent"
-        @click="() => goToOrderDetails(order.id)"
+        @click="() => goToOrderDetails(order._id)"
       >
-        <td class="pl-4 rounded-l bg-white">{{ order.id }}</td>
-        <td class="pl-4 bg-white">{{ order.from }}</td>
-        <td class="pl-4 bg-white">{{ order.to }}</td>
-        <td class="pl-4 bg-white">{{ order.date }}</td>
+        <td class="pl-4 rounded-l bg-white">{{ order._id }}</td>
+        <td class="pl-4 bg-white">{{ order.deliveryAdress.shippingFrom }}</td>
+        <td class="pl-4 bg-white">{{ order.deliveryAdress.shippingTo }}</td>
+        <td class="pl-4 bg-white">{{ order.orderDate }}</td>
         <td class="pl-4 bg-white">{{ order.status }}</td>
-        <td class="pr-4 rounded-r bg-white font-semibold text-right">
-          {{ order.invoice }}
-        </td>
+        <td class="pr-4 rounded-r bg-white font-semibold text-right">View</td>
       </tr>
     </tbody>
   </table>
