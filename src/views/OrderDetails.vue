@@ -69,26 +69,32 @@ const updateOrderStatus = async () => {
 };
 
 const deleteOrder = async () => {
-  try {
-    const response = await fetch(
-      `http://localhost:3000/api/v1/orders/${orderId.value}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
+  const isConfirmed = window.confirm(
+    "Are you sure you want to delete this order?"
+  );
+
+  if (isConfirmed) {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/v1/orders/${orderId.value}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.status === "success") {
+        router.push({ name: "Orders" });
+      } else {
+        console.error("Error deleting order:", data.message);
       }
-    );
-
-    const data = await response.json();
-
-    if (data.status === "success") {
-      router.push({ name: "Orders" });
-    } else {
-      console.error("Error deleting order:", data.message);
+    } catch (error) {
+      console.error("Error deleting order:", error);
     }
-  } catch (error) {
-    console.error("Error deleting order:", error);
   }
 };
 
