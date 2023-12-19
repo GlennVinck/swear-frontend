@@ -1,6 +1,7 @@
 <script setup>
 import Sidebar from "../components/Sidebar.vue";
 import Topbar from "../components/Topbar.vue";
+import OrderStatus from "../components/OrderStatus.vue";
 import { ref, watchEffect, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
@@ -83,22 +84,27 @@ onMounted(() => {
         </button>
 
         <h1 class="text-2xl font-semibold mb-2">Order</h1>
-        <div class="flex items-center">
-          <p class="text-base font-light mr-4 text-gray-500">{{ orderId }}</p>
+        <div class="flex flex-row justify-between items-center">
+          <div class="flex flex-row items-center">
+            <p class="text-base font-light mr-4 text-gray-500">{{ orderId }}</p>
 
-          <p class="text-base font-semibold">
-            {{ orderDetails.status }}
-          </p>
+            <OrderStatus title="OrderStatus" :content="orderDetails.status" />
+          </div>
 
-          <!-- Dropdown menu for order status -->
-          <select v-model="selectedStatus" class="text-base font-light pl-4">
-            <option value="pending">Pending</option>
-            <option value="in progress">In Progress</option>
-            <option value="completed">Completed</option>
-          </select>
-          <button @click="updateOrderStatus" class="text-base font-light pl-4">
-            Update Status
-          </button>
+          <div>
+            <!-- Dropdown menu for order status -->
+            <select v-model="selectedStatus" class="text-sm py-2 px-4 rounded">
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <button
+              @click="updateOrderStatus"
+              class="text-sm text-neutral-700 p-2 ml-4 border border-neutral-400 rounded"
+            >
+              Update Status
+            </button>
+          </div>
         </div>
 
         <h3 class="text-base font-semibold mb-2 mt-16">Overview</h3>
