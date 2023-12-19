@@ -68,6 +68,30 @@ const updateOrderStatus = async () => {
   }
 };
 
+const deleteOrder = async () => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/v1/orders/${orderId.value}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+      router.push({ name: "Orders" });
+    } else {
+      console.error("Error deleting order:", data.message);
+    }
+  } catch (error) {
+    console.error("Error deleting order:", error);
+  }
+};
+
 onMounted(() => {
   fetchOrderDetails();
 });
@@ -240,9 +264,10 @@ onMounted(() => {
         </div>
         <div class="flex flex-row justify-end items-center mt-4">
           <button
+            @click="deleteOrder"
             class="p-2 text-sm font-normal border border-red-500 text-red-500 rounded"
           >
-            Cancel Order
+            Delete Order
           </button>
         </div>
       </div>
