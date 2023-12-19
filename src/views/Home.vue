@@ -3,10 +3,71 @@ import Sidebar from "../components/Sidebar.vue";
 import Topbar from "../components/Topbar.vue";
 import CardSmall from "../components/CardSmall.vue";
 import OrderTable from "../components/OrderTable.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
+
+const socket = new WebSocket("ws://localhost:3000/primus");
+
+// onMounted(() => {
+//   console.log("attempting to connect to server...");
+//   // WebSocket setup
+//   socket.onopen = () => {
+//     console.log("Connected to server. WebSocket status:", socket.readyState);
+//     sendInitialData();
+//     fetchAllOrders();
+//   };
+
+//   socket.onmessage = (e) => {
+//     const data = JSON.parse(e.data);
+
+//     console.log("Message received:", e.data);
+
+//     if (data.action === "initialData") {
+//       console.log("initial data received", data);
+
+//       totalOrders.value = data.data.totalOrders;
+//       totalCustomers.value = data.data.totalCustomers;
+//       totalRevenue.value = data.data.totalRevenue;
+//     } else if (data.action === "newResult") {
+//       console.log("new result received", data);
+
+//       totalOrders.value = data.data.totalOrders;
+//       totalCustomers.value = data.data.totalCustomers;
+//       totalRevenue.value = data.data.totalRevenue;
+//     }
+//   };
+
+//   socket.onclose = () => {
+//     console.log("Connection closed. Reconnecting...");
+//   };
+
+//   socket.onerror = (err) => {
+//     console.error("Socket encountered error: ", err.message, "Closing socket");
+//     socket.close();
+//   };
+// });
+
+onMounted(() => {
+  fetchAllOrders();
+  socket.onmessage = (e) => {
+    const data = JSON.parse(e.data);
+    console.log("Message received:", e.data);
+
+    if (data.action === "newOrder") {
+      console.log("new order received", data);
+      handleNewOrder(data.data);
+    }
+  };
+  fetchAllOrders();
+});
+
+const handleNewOrder = (order) => {
+  totalOrders.value++;
+  totalRevenue.value += order.price;
+};
+
 const showAllOrders = () => {
   router.push({ name: "Orders" });
 };
@@ -64,8 +125,6 @@ const fetchAllOrders = async () => {
     console.error("Error fetching total orders:", error);
   }
 };
-
-fetchAllOrders();
 
 const newestOrdersToShow = 4;
 </script>
