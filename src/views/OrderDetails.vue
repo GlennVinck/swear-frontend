@@ -137,138 +137,148 @@ onMounted(() => {
           </div>
         </div>
 
-        <h3 class="text-base font-semibold mb-2 mt-16">Overview</h3>
-        <div
-          class="flex items-center justify-center w-1/8 bg-white p-4 rounded-lg"
-        >
-          <div class="flex items-center mb-4">
-            <div class="w-1/3 flex items-center justify-center">
+        <div class="w-full p-4 pr-0 my-4">
+          <h2 class="text-base font-semibold mb-2">Overview</h2>
+          <div
+            class="w-full flex flex-row items-center justify-between bg-white p-4 rounded"
+          >
+            <div class="flex flex-row">
+              <div class="mr-8">
+                <img
+                  :src="orderDetails.image"
+                  alt="Card Image"
+                  class="w-[200px] h-auto rounded"
+                />
+              </div>
+
+              <div class="flex flex-row">
+                <div class="mr-4">
+                  <div class="mb-2">
+                    <p class="text-sm text-gray-500 mb-1">Order ID</p>
+                    <p class="text-base font-semibold">
+                      {{ orderDetails._id }}
+                    </p>
+                  </div>
+
+                  <div class="mb-2">
+                    <p class="text-sm text-gray-500 mb-1">Article ID</p>
+                    <p class="text-base font-semibold">
+                      {{ orderDetails.orderNumber }}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p class="text-sm text-gray-500 mb-1">Order Date</p>
+                    <p class="text-base font-semibold">
+                      {{ orderDetails.orderDate }}
+                    </p>
+                  </div>
+                </div>
+                <div class="">
+                  <div class="mb-2">
+                    <p class="text-sm text-gray-500 mb-1">Price</p>
+                    <p class="text-base font-semibold">
+                      {{ "€" + " " + orderDetails.price }}
+                    </p>
+                  </div>
+
+                  <div class="mb-2">
+                    <p class="text-sm text-gray-500">Quantity</p>
+                    <p class="text-base font-semibold">
+                      {{ orderDetails.quantity }}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p class="text-sm text-gray-500 mb-1">Size</p>
+                    <p class="text-base font-semibold">
+                      {{ orderDetails.shoeSize }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-fit h-auto mr-2">
               <img
-                :src="orderDetails.image"
-                alt="Card Image"
-                class="w-2/3 h-auto rounded-lg"
+                src="../assets/swear-qr.png"
+                alt="QR Code"
+                class="w-40 h-auto rounded-lg"
               />
             </div>
-
-            <!-- overview section -->
-            <div class="w-1/3 ml-1/2 flex flex-col">
-              <div class="mb-2">
-                <p class="text-sm text-gray-500 mb-1">Order ID</p>
-                <p class="text-base font-semibold">{{ orderDetails._id }}</p>
-              </div>
-
-              <div class="mb-2">
-                <p class="text-sm text-gray-500 mb-1">Article ID</p>
-                <p class="text-base font-semibold">
-                  {{ orderDetails.orderNumber }}
-                </p>
-              </div>
-
-              <div>
-                <p class="text-sm text-gray-500 mb-1">Order Date</p>
-                <p class="text-base font-semibold">
-                  {{ orderDetails.orderDate }}
-                </p>
-              </div>
-            </div>
-            <div class="w-1/3 ml-1/2 flex flex-col">
-              <div class="mb-2">
-                <p class="text-sm text-gray-500 mb-1">Price</p>
-                <p class="text-base font-semibold">
-                  {{ "€" + " " + orderDetails.price }}
-                </p>
-              </div>
-
-              <div class="mb-2">
-                <p class="text-sm text-gray-500 mb-1">Quantity</p>
-                <p class="text-base font-semibold">
-                  {{ orderDetails.quantity }}
-                </p>
-              </div>
-
-              <div>
-                <p class="text-sm text-gray-500 mb-1">Size</p>
-                <p class="text-base font-semibold">
-                  {{ orderDetails.shoeSize }}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="w-1/2 ml-4">
-            <img
-              src="../assets/swear-qr.png"
-              alt="QR Code"
-              class="w-32 h-auto rounded-lg"
-            />
           </div>
         </div>
 
         <!-- customer section -->
-        <h3 class="text-base font-semibold mb-2 mt-12">Customer</h3>
-        <div
-          class="flex items-center justify-left w-1/8 bg-white p-6 rounded-lg"
-        >
-          <div class="flex">
-            <div class="mr-12">
-              <p class="text-sm text-gray-500 mb-1">Customer ID</p>
-              <p class="text-base font-semibold">
-                {{ orderDetails.customerId }}
-              </p>
-            </div>
+        <div class="w-full p-4 pr-0 my-4">
+          <h2 class="text-base font-semibold mb-2">Customer</h2>
+          <div
+            class="flex items-center justify-left w-1/8 bg-white p-6 rounded-lg"
+          >
+            <div class="flex">
+              <div class="mr-12">
+                <p class="text-sm text-gray-500 mb-1">Customer ID</p>
+                <p class="text-base font-semibold">
+                  {{ orderDetails.customerId }}
+                </p>
+              </div>
 
-            <div class="mr-12">
-              <p class="text-sm text-gray-500 mb-1">Name</p>
-              <p class="text-base font-semibold">
-                {{ orderDetails.firstName + " " + orderDetails.lastName }}
-              </p>
-            </div>
+              <div class="mr-12">
+                <p class="text-sm text-gray-500 mb-1">Name</p>
+                <p class="text-base font-semibold">
+                  {{ orderDetails.firstName + " " + orderDetails.lastName }}
+                </p>
+              </div>
 
-            <div>
-              <p class="text-sm text-gray-500 mb-1">Email</p>
-              <p class="text-base font-semibold">
-                {{ orderDetails.email }}
-              </p>
+              <div>
+                <p class="text-sm text-gray-500 mb-1">Email</p>
+                <p class="text-base font-semibold">
+                  {{ orderDetails.email }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- shipping section -->
-        <h3 class="text-base font-semibold mb-2 mt-12">Shipping</h3>
-        <div
-          class="flex items-center justify-left w-1/8 bg-white p-6 rounded-lg"
-          v-if="orderDetails.deliveryAdress"
-        >
-          <div class="flex">
-            <div class="mr-12">
-              <p class="text-sm text-gray-500 mb-1">Shipping from</p>
-              <p class="text-base font-semibold">
-                {{ orderDetails.deliveryAdress.shippingFrom }}
-              </p>
-            </div>
+        <div class="w-full p-4 pr-0 my-4">
+          <h2 class="text-base font-semibold mb-2">Shipping</h2>
+          <div
+            class="flex items-center justify-left w-1/8 bg-white p-6 rounded-lg"
+            v-if="orderDetails.deliveryAdress"
+          >
+            <div class="flex">
+              <div class="mr-12">
+                <p class="text-sm text-gray-500 mb-1">Shipping from</p>
+                <p class="text-base font-semibold">
+                  {{ orderDetails.deliveryAdress.shippingFrom }}
+                </p>
+              </div>
 
-            <div class="mr-12">
-              <p class="text-sm text-gray-500 mb-1">Shipping To</p>
-              <p class="text-base font-semibold">
-                {{ orderDetails.deliveryAdress.shippingTo }}
-              </p>
-            </div>
+              <div class="mr-12">
+                <p class="text-sm text-gray-500 mb-1">Shipping To</p>
+                <p class="text-base font-semibold">
+                  {{ orderDetails.deliveryAdress.shippingTo }}
+                </p>
+              </div>
 
-            <div class="mr-12">
-              <p class="text-sm text-gray-500 mb-1">Shipping Address</p>
-              <p class="text-base font-semibold">
-                {{ orderDetails.deliveryAdress.fullAdress }}
-              </p>
-            </div>
+              <div class="mr-12">
+                <p class="text-sm text-gray-500 mb-1">Shipping Address</p>
+                <p class="text-base font-semibold">
+                  {{ orderDetails.deliveryAdress.fullAdress }}
+                </p>
+              </div>
 
-            <div class="mr-44">
-              <p class="text-sm text-gray-500 mb-1">Date</p>
-              <p class="text-base font-semibold">
-                {{ orderDetails.orderDate }}
-              </p>
+              <div class="mr-44">
+                <p class="text-sm text-gray-500 mb-1">Date</p>
+                <p class="text-base font-semibold">
+                  {{ orderDetails.orderDate }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="flex flex-row justify-end items-center mt-4">
+
+        <div class="flex flex-row justify-end items-center w-full my-4">
           <button
             @click="deleteOrder"
             class="p-2 text-sm font-normal border border-red-500 text-red-500 rounded"
