@@ -14,6 +14,10 @@ const showAllOrders = () => {
 let totalOrders = ref("");
 let totalCustomers = ref("");
 let totalRevenue = ref("");
+let pending = ref("");
+let inProgress = ref("");
+let delivered = ref("");
+let canceled = ref("");
 
 const fetchAllOrders = async () => {
   try {
@@ -40,6 +44,19 @@ const fetchAllOrders = async () => {
         }
         return acc;
       }, []).length;
+
+      pending.value = data.data.orders.filter(
+        (order) => order.status === "Pending"
+      ).length;
+      inProgress.value = data.data.orders.filter(
+        (order) => order.status === "In Progress"
+      ).length;
+      delivered.value = data.data.orders.filter(
+        (order) => order.status === "Completed"
+      ).length;
+      canceled.value = data.data.orders.filter(
+        (order) => order.status === "Canceled"
+      ).length;
     } else {
       console.error("Error fetching total orders:", data.message);
     }
@@ -74,22 +91,22 @@ const newestOrdersToShow = 4;
             <CardSmall
               icon="../src/assets/icons/pending.svg"
               title="Pending"
-              :content="12"
+              :content="pending"
             />
             <CardSmall
               icon="../src/assets/icons/inprogress.svg"
               title="In Progress"
-              :content="8"
+              :content="inProgress"
             />
             <CardSmall
               icon="../src/assets/icons/delivered.svg"
               title="Delivered"
-              :content="110"
+              :content="delivered"
             />
             <CardSmall
               icon="../src/assets/icons/cancel.svg"
               title="Canceled"
-              :content="35"
+              :content="canceled"
             />
           </div>
         </div>
