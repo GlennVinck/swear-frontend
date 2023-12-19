@@ -14,6 +14,7 @@ watchEffect(() => {
 
 const orderId = ref(router.currentRoute.value.params.id);
 const orderDetails = ref({});
+const selectedStatus = ref("");
 
 const fetchOrderDetails = async () => {
   try {
@@ -31,11 +32,38 @@ const fetchOrderDetails = async () => {
 
     if (data.status === "success") {
       orderDetails.value = data.data.order;
+      selectedStatus.value = orderDetails.value.status;
     } else {
       console.error("Error fetching order details:", data.message);
     }
   } catch (error) {
     console.error("Error fetching order details:", error);
+  }
+};
+
+const updateOrderStatus = async () => {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/v1/orders/${orderId.value}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: selectedStatus.value }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (data.status === "success") {
+      await fetchOrderDetails();
+    } else {
+      console.error("Error updating order status:", data.message);
+    }
+  } catch (error) {
+    console.error("Error updating order status:", error);
   }
 };
 
@@ -56,10 +84,21 @@ onMounted(() => {
 
         <h1 class="text-2xl font-semibold mb-2">Order</h1>
         <div class="flex items-center">
-          <p class="text-base font-light mr-4 text-gray-500">
-            {{ orderId }}
+          <p class="text-base font-light mr-4 text-gray-500">{{ orderId }}</p>
+
+          <p class="text-base font-semibold">
+            {{ orderDetails.status }}
           </p>
-          <p class="text-base font-light pl-4">{{ orderDetails.status }}</p>
+
+          <!-- Dropdown menu for order status -->
+          <select v-model="selectedStatus" class="text-base font-light pl-4">
+            <option value="pending">Pending</option>
+            <option value="in progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </select>
+          <button @click="updateOrderStatus" class="text-base font-light pl-4">
+            Update Status
+          </button>
         </div>
 
         <h3 class="text-base font-semibold mb-2 mt-16">Overview</h3>
@@ -189,13 +228,6 @@ onMounted(() => {
               <p class="text-sm text-gray-500 mb-1">Date</p>
               <p class="text-base font-semibold">
                 {{ orderDetails.orderDate }}
-              </p>
-            </div>
-
-            <div>
-              <p class="text-sm text-gray-500 mb-1">Status</p>
-              <p class="text-base font-semibold">
-                {{ orderDetails.status }}
               </p>
             </div>
           </div>
