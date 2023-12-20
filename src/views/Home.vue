@@ -8,7 +8,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const socket = new WebSocket("ws://localhost:3000/primus");
+const socket = new WebSocket("ws://swear-api-ycnm.onrender.com/primus");
 
 // onMounted(() => {
 //   console.log("attempting to connect to server...");
@@ -82,12 +82,15 @@ let canceled = ref("");
 
 const fetchAllOrders = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/v1/orders", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      "http://swear-api-ycnm.onrender.com/api/v1/orders",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
     const data = await response.json();
 

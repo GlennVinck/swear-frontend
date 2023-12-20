@@ -12,12 +12,15 @@ const toggleDropdown = () => {
 
 const signOut = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/v1/users/logout", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      "http://swear-api-ycnm.onrender.com/api/v1/users/logout",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
     const data = await response.json();
 

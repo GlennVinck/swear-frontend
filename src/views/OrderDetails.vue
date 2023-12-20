@@ -20,7 +20,7 @@ const selectedStatus = ref("");
 const fetchOrderDetails = async () => {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/v1/orders/${orderId.value}`,
+      `https://swear-api-ycnm.onrender.com/api/v1/orders/${orderId.value}`,
       {
         method: "GET",
         headers: {
@@ -45,7 +45,7 @@ const fetchOrderDetails = async () => {
 const updateOrderStatus = async () => {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/v1/orders/${orderId.value}`,
+      `http://swear-api-ycnm.onrender.com/api/v1/orders/${orderId.value}`,
       {
         method: "PUT",
         headers: {
@@ -76,7 +76,7 @@ const deleteOrder = async () => {
   if (isConfirmed) {
     try {
       const response = await fetch(
-        `http://localhost:3000/api/v1/orders/${orderId.value}`,
+        `http://swear-api-ycnm.onrender.com/api/v1/orders/${orderId.value}`,
         {
           method: "DELETE",
           headers: {

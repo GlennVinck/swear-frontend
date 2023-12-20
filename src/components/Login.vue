@@ -10,16 +10,19 @@ const password = ref("");
 const error = ref("");
 
 const Login = async () => {
-  const response = await fetch("http://localhost:3000/api/v1/users/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      email: email.value,
-      password: password.value,
-    }),
-  });
+  const response = await fetch(
+    "http://swear-api-ycnm.onrender.com/api/v1/users/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value,
+      }),
+    }
+  );
   const data = await response.json();
   if (data.status === "success") {
     localStorage.setItem("token", data.data.token);

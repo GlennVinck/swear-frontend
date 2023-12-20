@@ -15,12 +15,15 @@ const orders = ref([]);
 
 const getAllOrders = async () => {
   try {
-    const response = await fetch("http://localhost:3000/api/v1/orders", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      "http://swear-api-ycnm.onrender.com/api/v1/orders",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
     const data = await response.json();
 
@@ -34,7 +37,7 @@ const getAllOrders = async () => {
   }
 };
 
-const socket = new WebSocket("ws://localhost:3000/primus");
+const socket = new WebSocket("ws://swear-api-ycnm.onrender.com/primus");
 
 onMounted(() => {
   getAllOrders();
