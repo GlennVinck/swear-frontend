@@ -39,16 +39,12 @@ const Login = async () => {
     class="flex items-center justify-center min-h-screen drop-shadow-[0_0px_60px_rgba(0,0,0,0.2)]"
   >
     <div class="w-[600px] h-[400px]">
-      <img src="../assets/herobanner.jpg" alt="herobanner" />
+      <img src="/herobanner.jpg" alt="herobanner" />
     </div>
     <div class="w-[400px] h-[400px] bg-white">
       <div class="flex flex-col items-start justify-between h-full p-6">
         <div>
-          <img
-            class="w-auto h-[18px]"
-            src="../assets/swear-logo-black.webp"
-            alt=""
-          />
+          <img class="w-auto h-[18px]" src="/swear-logo-black.webp" alt="" />
         </div>
         <form class="flex flex-col w-full" @submit.prevent="Login">
           <div class="flex flex-col mb-12">

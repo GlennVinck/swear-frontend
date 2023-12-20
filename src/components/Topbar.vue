@@ -48,18 +48,14 @@ const signOut = async () => {
         placeholder="Search"
         class="h-[32px] min-w-[400px] px-4 bg-stone-100 border-none rounded focus:outline-none placeholder:text-sm placeholder:text-neutral-400 focus:ring-1 focus:ring-primary-accent"
       />
-      <img
-        src="../assets/icons/search.svg"
-        alt="Search Icon"
-        class="absolute right-4"
-      />
+      <img src="/search.svg" alt="Search Icon" class="absolute right-4" />
     </div>
     <div
       class="flex flex-row gap-4 items-center justify-center mr-4 cursor-pointer relative"
       @click="toggleDropdown"
     >
       <img
-        src="../assets/profilepic.jpg"
+        src="/profilepic.jpg"
         alt="profile picture"
         class="w-[32px] h-[32px] rounded-full"
       />
@@ -69,7 +65,7 @@ const signOut = async () => {
         <span class="text-xs text-neutral-400">Admin</span>
       </div>
       <img
-        src="../assets/caret-down-thin.svg"
+        src="/caret-down-thin.svg"
         alt="arrow down"
         class="w-[24px] h-[24px]"
       />

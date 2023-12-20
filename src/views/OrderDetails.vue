@@ -200,7 +200,7 @@ onMounted(() => {
             </div>
             <div class="w-fit h-auto mr-2">
               <img
-                src="../assets/swear-qr.png"
+                src="/swear-qr.png"
                 alt="QR Code"
                 class="w-40 h-auto rounded-lg"
               />

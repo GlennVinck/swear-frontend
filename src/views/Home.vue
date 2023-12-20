@@ -150,23 +150,19 @@ const newestOrdersToShow = 4;
         <div class="w-fit p-4 pr-0 my-4">
           <h2 class="text-base font-semibold mb-2">Global Order Status</h2>
           <div class="flex row">
+            <CardSmall icon="/pending.svg" title="Pending" :content="pending" />
             <CardSmall
-              icon="../src/assets/icons/pending.svg"
-              title="Pending"
-              :content="pending"
-            />
-            <CardSmall
-              icon="../src/assets/icons/inprogress.svg"
+              icon="/inprogress.svg"
               title="In Progress"
               :content="inProgress"
             />
             <CardSmall
-              icon="../src/assets/icons/delivered.svg"
+              icon="/delivered.svg"
               title="Delivered"
               :content="delivered"
             />
             <CardSmall
-              icon="../src/assets/icons/cancel.svg"
+              icon="/cancel.svg"
               title="Canceled"
               :content="canceled"
             />
@@ -175,11 +171,7 @@ const newestOrdersToShow = 4;
         <div class="max-w-6xl p-4 pb-0 my-4">
           <div class="flex row items-center">
             <h2 class="text-base font-semibold">Newest Orders</h2>
-            <img
-              src="../assets/label-live.jpg"
-              alt=""
-              class="h-fit w-auto ml-2"
-            />
+            <img src="/label-live.jpg" alt="" class="h-fit w-auto ml-2" />
           </div>
           <OrderTable :ordersToShow="newestOrdersToShow" />
           <div class="flex row items-center justify-end">
