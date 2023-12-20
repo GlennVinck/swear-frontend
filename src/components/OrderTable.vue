@@ -37,7 +37,7 @@ const getAllOrders = async () => {
   }
 };
 
-const socket = new WebSocket("ws://swear-api-ycnm.onrender.com/primus");
+const socket = new WebSocket("wss://swear-api-ycnm.onrender.com/primus");
 
 onMounted(() => {
   getAllOrders();

@@ -8,7 +8,7 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-const socket = new WebSocket("ws://swear-api-ycnm.onrender.com/primus");
+const socket = new WebSocket("wss://swear-api-ycnm.onrender.com/primus");
 
 // onMounted(() => {
 //   console.log("attempting to connect to server...");
