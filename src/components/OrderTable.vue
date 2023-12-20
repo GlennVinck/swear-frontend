@@ -16,7 +16,7 @@ const orders = ref([]);
 const getAllOrders = async () => {
   try {
     const response = await fetch(
-      "http://swear-api-ycnm.onrender.com/api/v1/orders",
+      "https://swear-api-ycnm.onrender.com/api/v1/orders",
       {
         method: "GET",
         headers: {

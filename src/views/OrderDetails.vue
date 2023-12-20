@@ -45,7 +45,7 @@ const fetchOrderDetails = async () => {
 const updateOrderStatus = async () => {
   try {
     const response = await fetch(
-      `http://swear-api-ycnm.onrender.com/api/v1/orders/${orderId.value}`,
+      `https://swear-api-ycnm.onrender.com/api/v1/orders/${orderId.value}`,
       {
         method: "PUT",
         headers: {
@@ -76,7 +76,7 @@ const deleteOrder = async () => {
   if (isConfirmed) {
     try {
       const response = await fetch(
-        `http://swear-api-ycnm.onrender.com/api/v1/orders/${orderId.value}`,
+        `https://swear-api-ycnm.onrender.com/api/v1/orders/${orderId.value}`,
         {
           method: "DELETE",
           headers: {

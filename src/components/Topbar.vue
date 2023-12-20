@@ -13,7 +13,7 @@ const toggleDropdown = () => {
 const signOut = async () => {
   try {
     const response = await fetch(
-      "http://swear-api-ycnm.onrender.com/api/v1/users/logout",
+      "https://swear-api-ycnm.onrender.com/api/v1/users/logout",
       {
         method: "POST",
         headers: {

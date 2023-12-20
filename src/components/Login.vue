@@ -11,7 +11,7 @@ const error = ref("");
 
 const Login = async () => {
   const response = await fetch(
-    "http://swear-api-ycnm.onrender.com/api/v1/users/login",
+    "https://swear-api-ycnm.onrender.com/api/v1/users/login",
     {
       method: "POST",
       headers: {
